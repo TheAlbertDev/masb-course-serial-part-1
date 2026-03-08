@@ -1,0 +1,135 @@
+name: 📚 Educational Content Issue
+description: Report issues with course materials, documentation, or instructions
+title: "[CONTENT] "
+labels: ["documentation", "content", "enhancement"]
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Found an issue with the course content, documentation, or instructions? Help us improve the learning experience for everyone!
+
+  - type: dropdown
+    id: content-type
+    attributes:
+      label: Content Type
+      description: What type of content issue are you reporting?
+      options:
+        - Incorrect information/documentation
+        - Missing information/steps
+        - Unclear instructions
+        - Broken links
+        - Outdated content
+        - Typos/grammar
+        - Exercise improvement suggestion
+        - New content suggestion
+        - Other
+    validations:
+      required: true
+
+  - type: dropdown
+    id: location
+    attributes:
+      label: Location
+      description: Where is the issue located?
+      options:
+        - Main README.md
+        - Arduino README.md
+        - STM32Cube README.md
+        - Multiple files
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: file-location
+    attributes:
+      label: Specific File/Section
+      description: Please specify the exact location of the issue
+      placeholder: |
+        e.g., 
+        - File: arduino/README.md, Section: "Blink the LED with timers"
+        - Line number: approximately line 150
+        - Heading: "Timer configuration"
+
+  - type: textarea
+    id: current-content
+    attributes:
+      label: Current Content
+      description: What does the current content say? (copy and paste if possible)
+      placeholder: Copy the problematic text or describe what's currently there...
+
+  - type: textarea
+    id: issue-description
+    attributes:
+      label: Issue Description
+      description: What's wrong with the current content?
+      placeholder: |
+        Describe the problem:
+        - Is information missing?
+        - Is something incorrect?
+        - What makes it confusing?
+        - How could it be improved?
+    validations:
+      required: true
+
+  - type: textarea
+    id: suggested-content
+    attributes:
+      label: Suggested Improvement
+      description: How would you improve the content? (if applicable)
+      placeholder: |
+        Provide your suggestion for:
+        - Corrected text
+        - Additional information that should be included
+        - Better explanation or examples
+        - Restructuring ideas
+
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Impact Level
+      description: How does this issue affect the learning experience?
+      options:
+        - High - Prevents completion of exercise
+        - Medium - Causes significant confusion or delays
+        - Low - Minor improvement that would be nice to have
+    validations:
+      required: true
+
+  - type: dropdown
+    id: affected-platform
+    attributes:
+      label: Affected Platform
+      description: Which platform does this content issue relate to?
+      options:
+        - Arduino only
+        - STM32Cube only
+        - Both platforms
+        - Not applicable
+
+  - type: textarea
+    id: learning-context
+    attributes:
+      label: Learning Context
+      description: Are you a student, instructor, or self-learner? What's your experience level?
+      placeholder: |
+        This helps us understand the perspective:
+        - Student in MASB course
+        - Instructor reviewing materials
+        - Self-learner with embedded systems experience
+        - Beginner to embedded systems
+        - etc.
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional Context
+      description: Any other information that would help us improve the content
+      placeholder: |
+        e.g.,
+        - Related issues you've seen
+        - Additional resources that might be helpful
+        - Common questions from other students
+        - etc.

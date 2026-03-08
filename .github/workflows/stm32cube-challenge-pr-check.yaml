@@ -1,0 +1,64 @@
+name: 🧪 STM32Cube serial challenge - PR check
+
+on:
+  pull_request:
+    branches:
+      - main
+    types:
+      - opened
+      - synchronize
+      - reopened
+      - edited
+
+permissions:
+  contents: read
+
+jobs:
+  acceptance_tests:
+    name: ✅ Build and Run Acceptance tests
+    if: |
+      !github.event.repository.is_template &&
+      github.head_ref == 'stm32cube/develop'
+    runs-on: self-hosted
+    steps:
+      - name: 🛡️ Get GitHub App token
+        uses: actions/create-github-app-token@v2
+        id: app-token
+        with:
+          app-id: ${{ secrets.THEALBERTDEVBOT_APP_ID }}
+          private-key: ${{ secrets.THEALBERTDEVBOT_SECRET_KEY }}
+          owner: ${{ github.repository_owner }}
+
+      - name: 📥 Checkout code
+        uses: actions/checkout@v6
+        with:
+          token: ${{ steps.app-token.outputs.token }}
+
+      - name: 🏗️ Build and upload STM32Cube project
+        run: |
+          cd ${{ github.workspace }}/stm32cube/workspace/shared/challenge
+          rm -rf build/Debug
+          cmake -G Ninja -DCMAKE_BUILD_TYPE=Debug -DCMAKE_TOOLCHAIN_FILE=./cmake/gcc-arm-none-eabi.cmake -B build/Debug
+          cmake --build build/Debug
+          pio pkg exec -p tool-openocd -c "openocd -f interface/stlink.cfg -f target/stm32f4x.cfg -c 'program build/Debug/challenge.elf verify reset exit'"
+
+      - name: 🧬 Run acceptance tests
+        id: acceptance-tests
+        run: |
+          TEST_DIR=${{ github.workspace }}/.github/tests/acceptance/test_stm32cube_challenge
+          CACHE_KEY=$(md5sum "$TEST_DIR/requirements.txt" | cut -d' ' -f1)
+          VENV_CACHE_DIR="/opt/actions-cache/venv/$CACHE_KEY"
+
+          if [ -d "$VENV_CACHE_DIR" ]; then
+            echo "Cache hit: $CACHE_KEY"
+          else
+            echo "Cache miss: $CACHE_KEY — creating new .venv"
+            mkdir -p "$VENV_CACHE_DIR"
+            /usr/bin/python3 -m venv "$VENV_CACHE_DIR"
+            source "$VENV_CACHE_DIR/bin/activate"
+            pip install -r "$TEST_DIR/requirements.txt"
+          fi
+
+          source "$VENV_CACHE_DIR/bin/activate"
+          cd "$TEST_DIR"
+          python -m pytest -v

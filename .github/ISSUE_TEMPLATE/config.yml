@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: 💬 Course Discussions
+    url: https://github.com/TheAlbertDev/MASB/discussions
+    about: Ask questions, get help, and discuss course topics with instructors and peers

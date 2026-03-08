@@ -1,0 +1,138 @@
+name: 🔧 Hardware/Setup Issue
+description: Report issues with hardware setup, connections, or development environment configuration
+title: "[HARDWARE] "
+labels: ["hardware", "setup", "needs-triage"]
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Having trouble with hardware setup or development environment configuration? Please provide details below to help us assist you.
+
+  - type: dropdown
+    id: issue-type
+    attributes:
+      label: Issue Type
+      description: What kind of setup issue are you experiencing?
+      options:
+        - Hardware connection/wiring
+        - Development environment setup
+        - Board not recognized/detected
+        - Upload/flashing issues
+        - Driver installation
+        - Library/dependency issues
+        - Other (specify in description)
+    validations:
+      required: true
+
+  - type: dropdown
+    id: platform
+    attributes:
+      label: Platform
+      description: Which development environment?
+      options:
+        - Arduino
+        - STM32Cube
+        - Both
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Issue Description
+      description: Describe your setup issue in detail
+      placeholder: What specific problem are you encountering?
+    validations:
+      required: true
+
+  - type: dropdown
+    id: hardware
+    attributes:
+      label: Development Board
+      description: Which board are you using?
+      options:
+        - STM32 Nucleo-64 (STM32F401RE)
+        - Custom board
+        - Other (specify below)
+    validations:
+      required: true
+
+  - type: input
+    id: board-details
+    attributes:
+      label: Board Details
+      description: If you selected "Other" above or want to provide more specific details
+      placeholder: e.g., Specific board revision, custom board description
+
+  - type: input
+    id: computer-os
+    attributes:
+      label: Computer/OS
+      description: Your computer and operating system
+      placeholder: e.g., Windows 11, macOS 14.1, Ubuntu 22.04
+
+  - type: input
+    id: ide-version
+    attributes:
+      label: IDE/Software Version
+      description: Development environment version
+      placeholder: e.g., PlatformIO 3.3.4, STM32Cube for VSCode 3.7.0
+
+  - type: textarea
+    id: circuit-setup
+    attributes:
+      label: Hardware Setup/Circuit
+      description: Describe your hardware connections and setup
+      placeholder: |
+        Please describe:
+        - How you've connected the components
+        - Pin connections
+        - Power supply details
+        - Any external components used
+
+        You can also attach photos or diagrams if helpful.
+
+  - type: textarea
+    id: steps-attempted
+    attributes:
+      label: Steps Already Attempted
+      description: What have you tried to solve this issue?
+      placeholder: |
+        1. Tried different USB cable
+        2. Reinstalled drivers
+        3. Checked connections
+        4. etc.
+
+  - type: textarea
+    id: error-output
+    attributes:
+      label: Error Messages/Console Output
+      description: Any error messages, console output, or diagnostic information
+      render: shell
+      placeholder: Paste any error messages here...
+
+  - type: textarea
+    id: device-manager
+    attributes:
+      label: Device Manager/System Information
+      description: If relevant, provide information about how your system recognizes the hardware
+      placeholder: |
+        e.g., Device Manager shows "Unknown device", 
+        lsusb output on Linux, 
+        System Information on macOS, etc.
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Troubleshooting Checklist
+      description: Have you tried the basic troubleshooting steps?
+      options:
+        - label: I have checked all physical connections
+        - label: I have tried a different USB cable
+        - label: I have restarted the IDE/development environment
+        - label: I have checked that board drivers are properly installed
+        - label: I have verified the board is receiving power
+        - label: I have consulted the platform-specific README files

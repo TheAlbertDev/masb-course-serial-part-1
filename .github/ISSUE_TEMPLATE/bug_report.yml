@@ -1,0 +1,155 @@
+name: 🐛 Bug Report
+description: Report a bug or unexpected behavior in the code or exercises
+title: "[BUG] "
+labels: ["bug", "needs-triage"]
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for taking the time to report a bug! Please fill out the form below with as much detail as possible to help us understand and reproduce the issue.
+
+  - type: dropdown
+    id: platform
+    attributes:
+      label: Platform
+      description: Which development environment are you using?
+      options:
+        - Arduino
+        - STM32Cube
+        - Both
+        - Other (specify in description)
+    validations:
+      required: true
+
+  - type: dropdown
+    id: exercise
+    attributes:
+      label: Exercise/Project
+      description: Which exercise or project is affected?
+      options:
+        - blink-led-interrupt
+        - blink-led-hardware
+        - blink-led-intensity
+        - blink-led-heartbeat
+        - Other (specify in description)
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Bug Description
+      description: A clear and concise description of what the bug is.
+      placeholder: Describe what's happening vs what you expected...
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to Reproduce
+      description: Steps to reproduce the behavior
+      placeholder: |
+        1. Go to...
+        2. Configure...
+        3. Run...
+        4. See error...
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected Behavior
+      description: What should have happened?
+      placeholder: Describe the expected outcome...
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual Behavior
+      description: What actually happened?
+      placeholder: Describe what you observed...
+    validations:
+      required: true
+
+  - type: dropdown
+    id: hardware
+    attributes:
+      label: Hardware
+      description: Which development board are you using?
+      options:
+        - STM32 Nucleo-64 (STM32F401RE)
+        - Custom board
+        - Other (specify in description)
+    validations:
+      required: true
+
+  - type: input
+    id: ide-version
+    attributes:
+      label: IDE/Software Version
+      description: Version of Arduino IDE, STM32CubeIDE, or other development environment
+      placeholder: e.g., PlatformIO 3.3.4, STM32Cube for VSCode 3.7.0
+
+  - type: input
+    id: os
+    attributes:
+      label: Operating System
+      description: Your operating system
+      placeholder: e.g., Windows 11, macOS 14.1, Ubuntu 22.04
+
+  - type: textarea
+    id: error-messages
+    attributes:
+      label: Error Messages/Console Output
+      description: Copy and paste any error messages, compilation errors, or console output
+      render: shell
+      placeholder: Paste error messages here...
+
+  - type: textarea
+    id: code
+    attributes:
+      label: Relevant Code
+      description: If applicable, add relevant code snippets that are causing issues
+      render: cpp
+      placeholder: |
+        // Paste relevant code here
+        void setup() {
+          // Your code
+        }
+
+  - type: textarea
+    id: circuit
+    attributes:
+      label: Hardware Connections
+      description: Describe your hardware setup or attach a schematic/photo if relevant
+      placeholder: |
+        - LED connected to pin PA5
+        - Resistor 220Ω in series
+        - Power supply: USB
+        - etc.
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional Context
+      description: Add any other context about the problem here, such as when it started happening
+      placeholder: Any additional information that might be helpful...
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Pre-submission Checklist
+      description: Please confirm you have done the following before submitting
+      options:
+        - label: I have searched existing issues to make sure this bug hasn't been reported before
+          required: true
+        - label: I have tried following the troubleshooting steps in the README
+          required: true
+        - label: I have provided all the requested information above
+          required: true

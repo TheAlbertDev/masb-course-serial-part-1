@@ -1,0 +1,6 @@
+pytest
+rpi-lgpio
+smbus2
+pyserial
+numpy
+matplotlib

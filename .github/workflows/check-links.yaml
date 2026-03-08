@@ -1,0 +1,24 @@
+name: 🔗 Check Markdown links
+
+on:
+  push:
+    branches:
+      - main
+  schedule:
+    # Run everyday at 9:00 AM (See https://pubs.opengroup.org/onlinepubs/9699919799/utilities/crontab.html#tag_20_25_07)
+    - cron: "0 9 * * *"
+
+jobs:
+  markdown-link-check:
+    name: 🔗 Check Markdown links
+    if: |
+      github.event.repository.is_template
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📥 Checkout repository
+        uses: actions/checkout@v6
+      - name: 🔗 Check Markdown links
+        uses: tcort/github-action-markdown-link-check@v1.1.1
+        with:
+          config-file: ".github/configs/mlc_config.json"
+          use-verbose-mode: 'yes'

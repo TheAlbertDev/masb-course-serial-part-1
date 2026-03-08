@@ -1,0 +1,21 @@
+{
+  "aliveStatusCodes": [
+    200,
+    206,
+    0
+  ],
+  "ignorePatterns": [
+    {
+      "pattern": "<<.*>>"
+    },
+    {
+      "pattern": "%3C.*%3E"
+    },
+    {
+      "pattern": "^/assets/"
+    },
+    {
+      "pattern": "^/.github/steps/"
+    }
+  ]
+}

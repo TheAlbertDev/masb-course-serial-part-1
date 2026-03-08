@@ -1,0 +1,3 @@
+pytest
+rpi-lgpio
+pyserial
