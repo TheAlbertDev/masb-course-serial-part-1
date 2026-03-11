@@ -1,4 +1,4 @@
-# 🎓 MASB Course: Timers
+# 🎓 MASB Course: Serial Communications (Part 1)
 
 Welcome to a MASB course repository. We are glad to have you here and wish you a productive and engaging learning experience.
 
@@ -17,7 +17,7 @@ If you are working from a fork of this repository, it is important to regularly 
 
 1. Add the original repository as a remote:
    ```sh
-   git remote add upstream https://github.com/Biomedical-Electronics/masb-course-timers.git
+   git remote add upstream https://github.com/Biomedical-Electronics/masb-course-serial-part-1.git
    ```
 2. Fetch the latest changes:
    ```sh
@@ -46,7 +46,7 @@ You are encouraged to participate and seek assistance from instructors and peers
 
 Your feedback is highly valuable for improving this course. If you notice any errors, inconsistencies, or have suggestions for improvement, please create an issue using the provided template:
 
-[![](https://img.shields.io/badge/Create%20an%20Issue-%E2%86%92-28a745?style=for-the-badge&logo=github&labelColor=28a745)](https://github.com/TheAlbertDev/masb-course-timers/issues/new/choose)
+[![](https://img.shields.io/badge/Create%20an%20Issue-%E2%86%92-28a745?style=for-the-badge&logo=github&labelColor=28a745)](https://github.com/TheAlbertDev/masb-course-serial-part-1/issues/new/choose)
 
 Thank you for helping me enhance the learning experience for everyone.
 
