@@ -72,7 +72,9 @@ def test_multibyte_string_usart2_to_usart1(setup_hardware):
     ser_usart2, ser_usart1 = setup_hardware
 
     sent = b"Hello from USART2\r\n"
-    ser_usart2.write(sent)
+    for byte in sent:
+        ser_usart2.write(bytes([byte]))
+        time.sleep(0.003)
 
     received = ser_usart1.read(len(sent))
     assert received == sent, (
@@ -86,7 +88,9 @@ def test_multibyte_string_usart1_to_usart2(setup_hardware):
     ser_usart2, ser_usart1 = setup_hardware
 
     sent = b"Hello from USART1\r\n"
-    ser_usart1.write(sent)
+    for byte in sent:
+        ser_usart1.write(bytes([byte]))
+        time.sleep(0.003)
 
     received = ser_usart2.read(len(sent))
     assert received == sent, (
