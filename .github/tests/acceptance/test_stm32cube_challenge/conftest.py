@@ -4,7 +4,7 @@ import subprocess
 import serial
 
 SERIAL_PORT_USART2 = "/dev/ttyACM0"   # USB — EVB USART2 (computer side)
-SERIAL_PORT_USART1 = "/dev/serial0"   # RPi GPIO 14 (TX) / GPIO 15 (RX) — EVB USART1
+SERIAL_PORT_USART1 = "/dev/ttyAMA0"   # RPi GPIO 14 (TX) / GPIO 15 (RX) — EVB USART1
 BAUD_RATE = 115200
 
 
